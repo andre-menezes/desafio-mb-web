@@ -3,11 +3,7 @@ const app = express();
 const cors = require('cors');
 
 app.use(express.json());
-app.use(cors({
-  origin: 'http://localhost:5173',
-  methods: 'GET,POST',
-  credentials: true
-}));
+app.use(cors());
 
 app.get('/registration', (req, res) => {
   res.send('<html><body><h1>Formulário de Registro</h1></body></html>');
