@@ -32,5 +32,10 @@ export default {
   phone(data) {
     const regex = /^\(\d{2}\) \d{4,5}-\d{4}$/;
     return regex.test(data);
+  },
+
+  password(data) {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(data);
   }
 }

@@ -46,7 +46,7 @@ describe('Step1.vue component', () => {
     expect(buttonNextStep.text()).toBe('Continuar');
   }),
 
-  it('should display error messages if input is empty or invalid', async () => {
+  it('should display error if input email is empty or invalid', async () => {
     const wrapper = shallowMount(Step1, {
       props: {
         formData: {

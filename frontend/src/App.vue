@@ -19,6 +19,9 @@ const formData = reactive({
     cpf: null,
     birthdate: null,
     phone: null
+  },
+  step3: {
+    password: null
   }
 });
 
@@ -28,7 +31,7 @@ const currentStepComponent = computed(() => `step-${currentStep.value}`);
 
 function nextStep(stepData) {
   formData[`step${currentStep.value}`] = stepData;
-  if (currentStep.value < 3) currentStep.value++;
+  if (currentStep.value < 4) currentStep.value++;
 }
 
 function previousStep() {
