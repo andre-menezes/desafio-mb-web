@@ -45,7 +45,7 @@ describe('NaturalPerson.vue component', () => {
     const inputPhone = wrapper.find('[data-test="phone"]');
     expect(inputPhone.exists()).toBeTruthy();
     expect(inputPhone.element.tagName).toBe('INPUT');
-    expect(inputPhone.attributes('type')).toBe('phone');
+    expect(inputPhone.attributes('type')).toBe('tel');
 
     const buttonPreviousStep = wrapper.find('[data-test="btn-previous"]');
     expect(buttonPreviousStep.exists()).toBeTruthy();

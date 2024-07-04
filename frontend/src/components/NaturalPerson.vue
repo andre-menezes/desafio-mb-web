@@ -3,31 +3,33 @@
   <form @submit.prevent="submitForm" novalidate data-test="form">
     <label for="name">
       Nome completo
-      <input v-model="formStep2.name" type="text" id="name" data-test="name" required />
+      <input v-model="formStep2.name" type="text" id="name" data-test="name" autocomplete="name" required />
     </label>
     <legend v-if="isInvalid.name" data-test="error-name">{{ error.name }}</legend>
 
     <label for="cpf">
       CPF
-      <input v-model="formStep2.cpf" type="text" placeholder="ex: 123.456.789-10" id="cpf" data-test="cpf" required />
+      <input v-model="formStep2.cpf" type="text" placeholder="ex: 123.456.789-10" id="cpf" data-test="cpf"
+        autocomplete="off" required />
     </label>
     <legend v-if="isInvalid.cpf" data-test="error-cpf">{{ error.cpf }}</legend>
 
     <label for="birthdate">
       Data de nascimento
-      <input v-model="formStep2.birthdate" type="date" id="birthdate" data-test="birthdate" required />
+      <input v-model="formStep2.birthdate" type="date" id="birthdate" data-test="birthdate" autocomplete="bday"
+        required />
     </label>
     <legend v-if="isInvalid.birthdate" data-test="error-birthdate">{{ error.birthdate }}</legend>
 
     <label for="phone">
       Telefone
-      <input v-model="formStep2.phone" type="phone" placeholder="ex: (12) 34567-8910" id="phone" data-test="phone"
-        required />
+      <input v-model="formStep2.phone" type="tel" placeholder="ex: (12) 34567-8910" id="phone" data-test="phone"
+        autocomplete="tel" required />
     </label>
     <legend v-if="isInvalid.phone" data-test="error-phone">{{ error.phone }}</legend>
 
     <button type="button" id="previous-step" data-test="btn-previous" @click="emit('previous-step')">Voltar</button>
-    <button type="submit" id="next-step" data-test="btn-next" @click="submitForm">Continuar</button>
+    <button type="submit" id="next-step" data-test="btn-next" @submit="submitForm">Continuar</button>
   </form>
 </template>
 

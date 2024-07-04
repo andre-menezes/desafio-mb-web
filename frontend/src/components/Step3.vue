@@ -1,14 +1,15 @@
 <template>
   <h1 data-test="heading">Senha de acesso</h1>
   <form @submit.prevent="submitForm" novalidate data-test="form">
-    <label for="email">
+    <label for="pswd">
       Sua senha
-      <input v-model="formStep3.password" type="password" id="password" data-test="password" required />
+      <input v-model="formStep3.password" type="password" id="pswd" data-test="password" autocomplete="new-password"
+        required />
     </label>
     <legend v-if="isInvalid" data-test="error-password">{{ error }}</legend>
 
     <button type="button" id="previous-step" data-test="btn-previous" @click="emit('previous-step')">Voltar</button>
-    <button type="submit" id="next-step" data-test="btn-next" @click="submitForm">Continuar</button>
+    <button type="submit" id="next-step" data-test="btn-next" @submit="submitForm">Continuar</button>
   </form>
 </template>
 

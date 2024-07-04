@@ -3,7 +3,7 @@
   <form @submit.prevent="submitForm" novalidate data-test="form">
     <label for="email">
       Endereço de e-mail
-      <input v-model="formStep1.email" type="email" id="email" data-test="email" required />
+      <input v-model="formStep1.email" type="email" id="email" data-test="email" autocomplete="email" required />
     </label>
     <legend v-if="isInvalid" data-test="error-name">{{ error }}</legend>
     <div>
@@ -17,7 +17,7 @@
         Pessoa Jurídica
       </label>
     </div>
-    <button type="submit" data-test="btn-next" @click="submitForm">Continuar</button>
+    <button type="submit" data-test="btn-next" @submit="submitForm">Continuar</button>
   </form>
 </template>
 

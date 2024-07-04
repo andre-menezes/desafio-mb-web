@@ -3,32 +3,34 @@
   <form @submit.prevent="submitForm" novalidate data-test="form">
     <label for="companyName">
       Razão Social
-      <input v-model="formStep2.companyName" type="text" id="companyName" data-test="company-name" required />
+      <input v-model="formStep2.companyName" type="text" id="companyName" data-test="company-name"
+        autocomplete="organization" required />
     </label>
     <legend v-if="isInvalid.companyName" data-test="error-company-name">{{ error.companyName }}</legend>
 
     <label for="cnpj">
       CNPJ
       <input v-model="formStep2.cnpj" type="text" placeholder="ex: 12.345.678/0001-90" id="cnpj" data-test="cnpj"
-        required />
+        autocomplete="off" required />
     </label>
     <legend v-if="isInvalid.cnpj" data-test="error-cnpj">{{ error.cnpj }}</legend>
 
     <label for="openingDate">
       Data de abertura
-      <input v-model="formStep2.openingDate" type="date" id="openingDate" data-test="opening-date" required />
+      <input v-model="formStep2.openingDate" type="date" id="openingDate" data-test="opening-date" autocomplete="bday"
+        required />
     </label>
     <legend v-if="isInvalid.openingDate" data-test="error-opening-date">{{ error.openingDate }}</legend>
 
     <label for="phone">
       Telefone
-      <input v-model="formStep2.phone" type="phone" placeholder="ex: (98) 8765-4321" id="phone" data-test="phone"
-        required />
+      <input v-model="formStep2.phone" type="tel" placeholder="ex: (98) 8765-4321" id="phone" data-test="phone"
+        autocomplete="tel" required />
     </label>
     <legend v-if="isInvalid.phone" data-test="error-phone">{{ error.phone }}</legend>
 
     <button type="button" id="previous-step" data-test="btn-previous" @click="emit('previous-step')">Voltar</button>
-    <button type="submit" id="next-step" data-test="btn-next" @click="submitForm">Continuar</button>
+    <button type="submit" id="next-step" data-test="btn-next" @submit="submitForm">Continuar</button>
   </form>
 </template>
 
