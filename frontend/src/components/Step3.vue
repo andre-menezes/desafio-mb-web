@@ -9,7 +9,7 @@
     <legend v-if="isInvalid" data-test="error-password">{{ error }}</legend>
 
     <button type="button" id="previous-step" data-test="btn-previous" @click="emit('previous-step')">Voltar</button>
-    <button type="submit" id="next-step" data-test="btn-next" @submit="submitForm">Continuar</button>
+    <button type="submit" id="next-step" data-test="btn-next">Continuar</button>
   </form>
 </template>
 

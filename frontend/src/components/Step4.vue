@@ -5,7 +5,7 @@
       Endereço de e-mail
       <input v-model="formStep4.step1.email" type="email" id="email" data-test="email" autocomplete="email" required />
     </label>
-    <legend v-if="isInvalid.email" data-test="error-name">{{ error.email }}</legend>
+    <legend v-if="isInvalid.email" data-test="error-email">{{ error.email }}</legend>
 
     <div v-if="formStep4.step1.client === 'PF'">
       <label for="name">
@@ -75,7 +75,7 @@
     <legend v-if="isInvalid.password" data-test="error-password">{{ error.password }}</legend>
 
     <button type="button" id="previous-step" data-test="btn-previous" @click="emit('previous-step')">Voltar</button>
-    <button type="submit" id="next-step" data-test="btn-next" @submit="submitForm">Cadastrar</button>
+    <button type="submit" id="next-step" data-test="btn-next">Cadastrar</button>
   </form>
 </template>
 

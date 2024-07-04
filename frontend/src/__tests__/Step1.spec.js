@@ -61,22 +61,22 @@ describe('Step1.vue component', () => {
     const inputEmail = wrapper.find('[data-test="email"]');
     inputEmail.setValue('');
     
-    let legend = wrapper.find('[data-test="error-name"]');
+    let legend = wrapper.find('[data-test="error-email"]');
     expect(legend.exists()).toBeFalsy();
     
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     
-    legend = wrapper.find('[data-test="error-name"]');
+    legend = wrapper.find('[data-test="error-email"]');
     expect(legend.element.tagName).toBe('LEGEND');
     expect(legend.text()).toBe('Campo obrigatório!')
     
     inputEmail.setValue('invalid@email');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     expect(legend.text()).toBe('Campo inválido!');
     
     inputEmail.setValue('valid@email.com');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     legend = wrapper.find('legend');
     expect(legend.exists()).toBeFalsy();
   }),
@@ -97,7 +97,7 @@ describe('Step1.vue component', () => {
     inputEmail.setValue('valid@email.com');
 
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
 
     const submitFormEvent = wrapper.emitted('next-step');
     expect(submitFormEvent).toHaveLength(1);
@@ -115,7 +115,7 @@ describe('Step1.vue component', () => {
     expect(pfRadioButton.element.checked).toBeFalsy();
     expect(pjRadioButton.element.checked).toBeTruthy();
 
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
 
     expect(submitFormEvent[0]).toEqual([
       {

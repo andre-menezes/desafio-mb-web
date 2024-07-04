@@ -78,7 +78,7 @@ describe('NaturalPerson.vue component', () => {
     inputName.setValue('');
 
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
 
     const legendError = wrapper.find('[data-test="error-name"]');
     expect(legendError.exists()).toBeTruthy();
@@ -87,7 +87,7 @@ describe('NaturalPerson.vue component', () => {
 
     inputName.setValue('John');
 
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
 
     expect(legendError.text()).toBe('Campo inválido!')
   }),
@@ -110,7 +110,7 @@ describe('NaturalPerson.vue component', () => {
     inputCpf.setValue('');
 
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
 
     const legendError = wrapper.find('[data-test="error-cpf"]');
     expect(legendError.exists()).toBeTruthy();
@@ -119,7 +119,7 @@ describe('NaturalPerson.vue component', () => {
 
     inputCpf.setValue('98765432100');
 
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
 
     expect(legendError.text()).toBe('Campo inválido!');
   }),
@@ -142,7 +142,7 @@ describe('NaturalPerson.vue component', () => {
     inputPhone.setValue('');
 
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
 
     let legendError = wrapper.find('[data-test="error-phone"]');
     expect(legendError.exists()).toBeTruthy();
@@ -150,16 +150,16 @@ describe('NaturalPerson.vue component', () => {
     expect(legendError.text()).toBe('Campo obrigatório!');
 
     inputPhone.setValue('10 1234-5678');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     expect(legendError.text()).toBe('Campo inválido!')
 
     inputPhone.setValue('(10) 1234-5678');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     legendError = wrapper.find('[data-test="error-phone"]');
     expect(legendError.exists()).toBeFalsy();
 
     inputPhone.setValue('(10) 12345-6789');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     legendError = wrapper.find('[data-test="error-phone"]');
     expect(legendError.exists()).toBeFalsy();
   }),
@@ -213,7 +213,7 @@ describe('NaturalPerson.vue component', () => {
     inputPhone.setValue('(10) 98765-4321');
 
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
-    await buttonNextStep.trigger('click')
+    await buttonNextStep.trigger('submit')
 
     const submitFormEvent = wrapper.emitted('next-step');
     expect(submitFormEvent).toHaveLength(1);

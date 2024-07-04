@@ -5,7 +5,7 @@
       Endereço de e-mail
       <input v-model="formStep1.email" type="email" id="email" data-test="email" autocomplete="email" required />
     </label>
-    <legend v-if="isInvalid" data-test="error-name">{{ error }}</legend>
+    <legend v-if="isInvalid" data-test="error-email">{{ error }}</legend>
     <div>
       <label for="pf">
         <input v-model="formStep1.client" id="pf" type="radio" name="client" value="PF" />
@@ -17,7 +17,7 @@
         Pessoa Jurídica
       </label>
     </div>
-    <button type="submit" data-test="btn-next" @submit="submitForm">Continuar</button>
+    <button type="submit" data-test="btn-next">Continuar</button>
   </form>
 </template>
 

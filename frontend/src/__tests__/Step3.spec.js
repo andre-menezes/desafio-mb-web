@@ -56,7 +56,7 @@ describe('Step3.vue component', () => {
     inputPassword.setValue('');
 
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
 
     let legendError = wrapper.find('[data-test="error-password"]');
     expect(legendError.exists()).toBeTruthy();
@@ -64,23 +64,23 @@ describe('Step3.vue component', () => {
     expect(legendError.text()).toBe('Campo obrigatório!');
 
     inputPassword.setValue('strong');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     expect(legendError.text()).toBe('Campo inválido!');
 
     inputPassword.setValue('strongpassword');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     expect(legendError.text()).toBe('Campo inválido!');
 
     inputPassword.setValue('strongpassword123');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     expect(legendError.text()).toBe('Campo inválido!');
 
     inputPassword.setValue('StrongPassword123');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     expect(legendError.text()).toBe('Campo inválido!');
 
     inputPassword.setValue('!StrongPassword123');
-    await buttonNextStep.trigger('click');
+    await buttonNextStep.trigger('submit');
     legendError = wrapper.find('[data-test="error-password"]');
     expect(legendError.exists()).toBeFalsy();
   }),
@@ -119,7 +119,7 @@ describe('Step3.vue component', () => {
     inputPassword.setValue('!StrongPassword123');
 
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
-    await buttonNextStep.trigger('click')
+    await buttonNextStep.trigger('submit')
 
     const submitFormEvent = wrapper.emitted('next-step');
     expect(submitFormEvent).toHaveLength(1);
