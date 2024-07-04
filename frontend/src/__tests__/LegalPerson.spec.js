@@ -1,16 +1,16 @@
 import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
-import NaturalPerson from '@/components/NaturalPerson.vue';
+import LegalPerson from '@/components/LegalPerson.vue';
 
-describe('NaturalPerson.vue component', () => {
+describe('LegalPerson.vue component', () => {
   it('should renders component', () => {
-    const wrapper = shallowMount(NaturalPerson, {
+    const wrapper = shallowMount(LegalPerson, {
       props: {
         formData: {
           step2: {
-            name: null,
-            cpf: null,
-            birthdate: null,
+            companyName: null,
+            cnpj: null,
+            openingDate: null,
             phone: null,
           }
         }
@@ -20,27 +20,27 @@ describe('NaturalPerson.vue component', () => {
     const heading = wrapper.find('[data-test="heading"]');
     expect(heading.exists()).toBeTruthy();
     expect(heading.element.tagName).toBe('H1')
-    expect(heading.text()).not.toBe('Pessoa Jurídica')
-    expect(heading.text()).toBe('Pessoa Física');
+    expect(heading.text()).not.toBe('Pessoa Física')
+    expect(heading.text()).toBe('Pessoa Jurídica');
 
     const form = wrapper.find('[data-test="form"]');
     expect(form.exists()).toBeTruthy();
     expect(form.element.tagName).toBe('FORM');
     
-    const inputName = wrapper.find('[data-test="name"]');
-    expect(inputName.exists()).toBeTruthy();
-    expect(inputName.element.tagName).toBe('INPUT');
-    expect(inputName.attributes('type')).toBe('text');
+    const inputCompanyName = wrapper.find('[data-test="company-name"]');
+    expect(inputCompanyName.exists()).toBeTruthy();
+    expect(inputCompanyName.element.tagName).toBe('INPUT');
+    expect(inputCompanyName.attributes('type')).toBe('text');
     
-    const inputCpf = wrapper.find('[data-test="cpf"]');
-    expect(inputCpf.exists()).toBeTruthy();
-    expect(inputCpf.element.tagName).toBe('INPUT');
-    expect(inputCpf.attributes('type')).toBe('text');
+    const inputCnpj = wrapper.find('[data-test="cnpj"]');
+    expect(inputCnpj.exists()).toBeTruthy();
+    expect(inputCnpj.element.tagName).toBe('INPUT');
+    expect(inputCnpj.attributes('type')).toBe('text');
     
-    const inputBirthdate = wrapper.find('[data-test="birthdate"]');
-    expect(inputBirthdate.exists()).toBeTruthy();
-    expect(inputBirthdate.element.tagName).toBe('INPUT');
-    expect(inputBirthdate.attributes('type')).toBe('date');
+    const inputOpeningDate = wrapper.find('[data-test="opening-date"]');
+    expect(inputOpeningDate.exists()).toBeTruthy();
+    expect(inputOpeningDate.element.tagName).toBe('INPUT');
+    expect(inputOpeningDate.attributes('type')).toBe('date');
     
     const inputPhone = wrapper.find('[data-test="phone"]');
     expect(inputPhone.exists()).toBeTruthy();
@@ -60,64 +60,64 @@ describe('NaturalPerson.vue component', () => {
     expect(buttonNextStep.text()).toBe('Continuar');
   }),
 
-  it('should display error if input name is empty or invalid', async () => {
-    const wrapper = shallowMount(NaturalPerson, {
+  it('should display error if input company name is empty or invalid', async () => {
+    const wrapper = shallowMount(LegalPerson, {
       props: {
         formData: {
           step2: {
-            name: null,
-            cpf: null,
-            birthdate: null,
+            companyName: null,
+            cnpj: null,
+            openingDate: null,
             phone: null,
           }
         }
       }
     });
 
-    const inputName = wrapper.find('[data-test="name"]');
-    inputName.setValue('');
+    const inputCompanyName = wrapper.find('[data-test="company-name"]');
+    inputCompanyName.setValue('');
 
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
     await buttonNextStep.trigger('click');
 
-    const legendError = wrapper.find('[data-test="error-name"]');
+    const legendError = wrapper.find('[data-test="error-company-name"]');
     expect(legendError.exists()).toBeTruthy();
     expect(legendError.element.tagName).toBe('LEGEND');
     expect(legendError.text()).toBe('Campo obrigatório!');
 
-    inputName.setValue('John');
+    inputCompanyName.setValue('John');
 
     await buttonNextStep.trigger('click');
 
     expect(legendError.text()).toBe('Campo inválido!')
   }),
 
-  it('should display error if input cpf is empty or invalid', async () => {
-    const wrapper = shallowMount(NaturalPerson, {
+  it('should display error if input cnpj is empty or invalid', async () => {
+    const wrapper = shallowMount(LegalPerson, {
       props: {
         formData: {
           step2: {
-            name: null,
-            cpf: null,
-            birthdate: null,
+            companyName: null,
+            cnpj: null,
+            openingDate: null,
             phone: null,
           }
         }
       }
     });
 
-    const inputCpf = wrapper.find('[data-test="cpf"]');
-    inputCpf.setValue('');
+    const inputCnpj = wrapper.find('[data-test="cnpj"]');
+    inputCnpj.setValue('');
 
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
     await buttonNextStep.trigger('click');
 
-    const legendError = wrapper.find('[data-test="error-cpf"]');
+    const legendError = wrapper.find('[data-test="error-cnpj"]');
     expect(legendError.exists()).toBeTruthy();
     expect(legendError.element.tagName).toBe('LEGEND');
     expect(legendError.text()).toBe('Campo obrigatório!');
 
-    inputCpf.setValue('98765432100');
+    inputCnpj.setValue('12345678000190');
 
     await buttonNextStep.trigger('click');
 
@@ -125,13 +125,13 @@ describe('NaturalPerson.vue component', () => {
   }),
 
   it('should display error if input phone is empty or invalid', async () => {
-    const wrapper = shallowMount(NaturalPerson, {
+    const wrapper = shallowMount(LegalPerson, {
       props: {
         formData: {
           step2: {
-            name: null,
-            cpf: null,
-            birthdate: null,
+            companyName: null,
+            cnpj: null,
+            openingDate: null,
             phone: null,
           }
         }
@@ -165,13 +165,13 @@ describe('NaturalPerson.vue component', () => {
   }),
 
   it('should emit the previous step when the back button is pressed', async () => {
-    const wrapper = shallowMount(NaturalPerson, {
+    const wrapper = shallowMount(LegalPerson, {
       props: {
         formData: {
           step2: {
-            name: null,
-            cpf: null,
-            birthdate: null,
+            companyName: null,
+            cnpj: null,
+            openingDate: null,
             phone: null,
           }
         }
@@ -187,30 +187,30 @@ describe('NaturalPerson.vue component', () => {
   }),
 
   it('should emit the next step if all fields are valid', async () => {
-    const wrapper = shallowMount(NaturalPerson, {
+    const wrapper = shallowMount(LegalPerson, {
       props: {
         formData: {
           step2: {
-            name: null,
-            cpf: null,
-            birthdate: null,
+            companyName: null,
+            cnpj: null,
+            openingDate: null,
             phone: null,
           }
         }
       }
     });
 
-    const inputName = wrapper.find('[data-test="name"]');
-    inputName.setValue('John Doe');
+    const inputCompanyName = wrapper.find('[data-test="company-name"]');
+    inputCompanyName.setValue('JD Company');
 
-    const inputCpf = wrapper.find('[data-test="cpf"]');
-    inputCpf.setValue('987.654.321-10');
+    const inputCnpj = wrapper.find('[data-test="cnpj"]');
+    inputCnpj.setValue('12.345.678/0001-90');
 
-    const inputBirthdate = wrapper.find('[data-test="birthdate"]');
-    inputBirthdate.setValue('1970-12-31');
+    const inputOpeningDate = wrapper.find('[data-test="opening-date"]');
+    inputOpeningDate.setValue('2020-01-31');
 
     const inputPhone = wrapper.find('[data-test="phone"]');
-    inputPhone.setValue('(10) 98765-4321');
+    inputPhone.setValue('(98) 7654-3210');
 
     const buttonNextStep = wrapper.find('[data-test="btn-next"]');
     await buttonNextStep.trigger('click')
@@ -219,10 +219,10 @@ describe('NaturalPerson.vue component', () => {
     expect(submitFormEvent).toHaveLength(1);
     expect(submitFormEvent[0]).toEqual([
       {
-        birthdate: "1970-12-31",
-        cpf: "987.654.321-10",
-        name: "John Doe",
-        phone: "(10) 98765-4321",
+        companyName: "JD Company",
+        cnpj: "12.345.678/0001-90",
+        openingDate: "2020-01-31",
+        phone: "(98) 7654-3210",
       }
     ]);
   })

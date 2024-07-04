@@ -23,7 +23,6 @@
       Telefone
       <input v-model="formStep2.phone" type="phone" placeholder="ex: (12) 34567-8910" id="phone" data-test="phone"
         required />
-      {{ formStep2.phone }}
     </label>
     <legend v-if="isInvalid.phone" data-test="error-phone">{{ error.phone }}</legend>
 
@@ -70,7 +69,7 @@ function submitForm() {
 
   const validName = validate.field('name', formStep2.name);
   const validCPF = validate.field('cpf', formStep2.cpf);
-  const validBirthdate = validate.field('birthdate', formStep2.birthdate);
+  const validBirthdate = validate.field('date', formStep2.birthdate);
   const validPhone = validate.field('phone', formStep2.phone);
 
   if (

@@ -15,7 +15,7 @@ export default {
     return regex.test(data);
   },
 
-  birthdate(data) {
+  date(data) {
     return !isNaN(new Date(data).getTime());
   },
 
