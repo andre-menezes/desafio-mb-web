@@ -1,16 +1,24 @@
 <template>
   <main>
+    <StepControl :currentStep="currentStep" />
     <component :is="currentStepComponent" :formData="formData" @next-step="nextStep" @previous-step="previousStep" />
   </main>
 </template>
 
 <script setup>
 import { computed, reactive, ref } from 'vue';
+import StepControl from './components/StepControl.vue';
 
 const formData = reactive({
   step1: {
     email: null,
-    client: null
+    client: 'PF'
+  },
+  step2: {
+    name: null,
+    cpf: null,
+    birthdate: null,
+    phone: null
   }
 });
 

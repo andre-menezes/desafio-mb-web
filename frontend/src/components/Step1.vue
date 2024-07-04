@@ -1,11 +1,11 @@
 <template>
-  <h1>Seja bem vindo(a)!</h1>
-  <form @submit.prevent="submitForm" novalidate>
+  <h1 data-test="heading">Seja bem vindo(a)!</h1>
+  <form @submit.prevent="submitForm" novalidate data-test="form">
     <label for="email">
       Endereço de e-mail
-      <input v-model="formStep1.email" type="email" id="email" required />
+      <input v-model="formStep1.email" type="email" id="email" data-test="email" required />
     </label>
-    <legend v-if="isInvalid" id="error-message">{{ error }}</legend>
+    <legend v-if="isInvalid" data-test="error-name">{{ error }}</legend>
     <div>
       <label for="pf">
         <input v-model="formStep1.client" id="pf" type="radio" name="client" value="PF" />
@@ -17,7 +17,7 @@
         Pessoa Jurídica
       </label>
     </div>
-    <button type="submit" @click="submitForm">Continuar</button>
+    <button type="submit" data-test="btn-next" @click="submitForm">Continuar</button>
   </form>
 </template>
 
@@ -29,8 +29,8 @@ const props = defineProps(['formData']);
 const emit = defineEmits(['next-step', 'previous-step']);
 
 const formStep1 = reactive({
-  email: '',
-  client: 'PF'
+  email: props.formData.step1.email,
+  client: props.formData.step1.client,
 });
 
 const isInvalid = ref(false);
@@ -39,19 +39,14 @@ const error = ref('Campo obrigatório!');
 function submitForm() {
   isInvalid.value = false;
 
-  if (!formStep1.email) {
-    isInvalid.value = true;
-    error.value = 'Campo obrigatório!';
-    return;
-  }
+  const isFormValid = validate.field('email', formStep1.email);
 
-  const isValidEmail = validate.email(formStep1.email);
-  if (!isValidEmail) {
-    error.value = 'E-mail inválido!';
+  if (typeof isFormValid === 'string') {
     isInvalid.value = true;
+    error.value = isFormValid === 'empty' ? 'Campo obrigatório!' : 'Campo inválido!'
     return;
-  }
+  };
 
-  return emit('next-step', formStep1);
+  return isFormValid && emit('next-step', formStep1);
 }
 </script>
