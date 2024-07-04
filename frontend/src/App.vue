@@ -1,7 +1,8 @@
 <template>
   <main>
     <StepControl :currentStep="currentStep" />
-    <component :is="currentStepComponent" :formData="formData" @next-step="nextStep" @previous-step="previousStep" />
+    <component :data-test="`step-${currentStep}`" :is="currentStepComponent" :formData="formData" @next-step="nextStep"
+      @previous-step="previousStep" />
   </main>
 </template>
 

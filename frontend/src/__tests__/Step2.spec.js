@@ -17,7 +17,7 @@ describe('Step2.vue component', () => {
     });
 
     expect(wrapper.exists()).toBeTruthy();
-  }),
+  })
 
   it('should renders NaturalPerson component if client is "PF"', () => {
     const wrapper = shallowMount(Step2, {
@@ -35,7 +35,7 @@ describe('Step2.vue component', () => {
     
     expect(naturalPerson.exists()).toBeTruthy();
     expect(legalPerson.exists()).toBeFalsy();
-  }),
+  })
 
   it('should renders LegalPerson component if client is "PJ"', () => {
     const wrapper = shallowMount(Step2, {

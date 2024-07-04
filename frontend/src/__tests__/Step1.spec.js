@@ -9,7 +9,7 @@ describe('Step1.vue component', () => {
         formData: {
           step1: {
             email: null,
-            client: null
+            client: 'PF'
           }
         }
       }
@@ -44,7 +44,7 @@ describe('Step1.vue component', () => {
     expect(buttonNextStep.element.tagName).toBe('BUTTON');
     expect(buttonNextStep.attributes('type')).toBe('submit');
     expect(buttonNextStep.text()).toBe('Continuar');
-  }),
+  })
 
   it('should display error if input email is empty or invalid', async () => {
     const wrapper = shallowMount(Step1, {
@@ -52,7 +52,7 @@ describe('Step1.vue component', () => {
         formData: {
           step1: {
             email: null,
-            client: null
+            client: 'PF'
           }
         }
       }
@@ -79,7 +79,7 @@ describe('Step1.vue component', () => {
     await buttonNextStep.trigger('submit');
     legend = wrapper.find('legend');
     expect(legend.exists()).toBeFalsy();
-  }),
+  })
 
   it('should emit next step if all fields are valid', async () => {
     const wrapper = shallowMount(Step1, {

@@ -39,7 +39,7 @@ describe('Step3.vue component', () => {
     expect(buttonNextStep.element.tagName).toBe('BUTTON');
     expect(buttonNextStep.attributes('type')).toBe('submit');
     expect(buttonNextStep.text()).toBe('Continuar');
-  }),
+  })
 
   it('should display error if input name is empty or invalid', async () => {
     const wrapper = shallowMount(Step3, {
@@ -83,7 +83,7 @@ describe('Step3.vue component', () => {
     await buttonNextStep.trigger('submit');
     legendError = wrapper.find('[data-test="error-password"]');
     expect(legendError.exists()).toBeFalsy();
-  }),
+  })
 
   it('should emit the previous step when the back button is pressed', async () => {
     const wrapper = shallowMount(Step3, {
@@ -102,7 +102,7 @@ describe('Step3.vue component', () => {
     const backEvent = wrapper.emitted('previous-step');
     expect(backEvent).toHaveLength(1);
     expect(backEvent[0]).toEqual([]);
-  }),
+  })
 
   it('should emit next step if all fields are valid', async () => {
     const wrapper = shallowMount(Step3, {

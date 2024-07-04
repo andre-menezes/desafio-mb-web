@@ -58,7 +58,7 @@ describe('NaturalPerson.vue component', () => {
     expect(buttonNextStep.element.tagName).toBe('BUTTON');
     expect(buttonNextStep.attributes('type')).toBe('submit');
     expect(buttonNextStep.text()).toBe('Continuar');
-  }),
+  })
 
   it('should display error if input name is empty or invalid', async () => {
     const wrapper = shallowMount(NaturalPerson, {
@@ -90,7 +90,7 @@ describe('NaturalPerson.vue component', () => {
     await buttonNextStep.trigger('submit');
 
     expect(legendError.text()).toBe('Campo inválido!')
-  }),
+  })
 
   it('should display error if input cpf is empty or invalid', async () => {
     const wrapper = shallowMount(NaturalPerson, {
@@ -122,7 +122,7 @@ describe('NaturalPerson.vue component', () => {
     await buttonNextStep.trigger('submit');
 
     expect(legendError.text()).toBe('Campo inválido!');
-  }),
+  })
 
   it('should display error if input phone is empty or invalid', async () => {
     const wrapper = shallowMount(NaturalPerson, {
@@ -162,7 +162,7 @@ describe('NaturalPerson.vue component', () => {
     await buttonNextStep.trigger('submit');
     legendError = wrapper.find('[data-test="error-phone"]');
     expect(legendError.exists()).toBeFalsy();
-  }),
+  })
 
   it('should emit the previous step when the back button is pressed', async () => {
     const wrapper = shallowMount(NaturalPerson, {
@@ -184,7 +184,7 @@ describe('NaturalPerson.vue component', () => {
     const backEvent = wrapper.emitted('previous-step');
     expect(backEvent).toHaveLength(1);
     expect(backEvent[0]).toEqual([]);
-  }),
+  })
 
   it('should emit the next step if all fields are valid', async () => {
     const wrapper = shallowMount(NaturalPerson, {

@@ -69,7 +69,7 @@ describe('Step4.vue component', () => {
     expect(buttonNextStep.element.tagName).toBe('BUTTON');
     expect(buttonNextStep.attributes('type')).toBe('submit');
     expect(buttonNextStep.text()).toBe('Cadastrar');
-  }),
+  })
 
   it('should renders component when client is "PJ"', () => {
     const wrapper = shallowMount(Step4, {
@@ -137,7 +137,7 @@ describe('Step4.vue component', () => {
     expect(buttonNextStep.element.tagName).toBe('BUTTON');
     expect(buttonNextStep.attributes('type')).toBe('submit');
     expect(buttonNextStep.text()).toBe('Cadastrar');
-  }),
+  })
 
   it('should display error if input email is empty or invalid', async () => {
     const wrapper = shallowMount(Step4, {
@@ -181,7 +181,7 @@ describe('Step4.vue component', () => {
     await buttonNextStep.trigger('submit');
     legend = wrapper.find('[data-test="error-email"]');
     expect(legend.exists()).toBeFalsy();
-  }),
+  })
 
   it('should display error if input name is empty or invalid', async () => {
     const wrapper = shallowMount(Step4, {
@@ -220,7 +220,7 @@ describe('Step4.vue component', () => {
     await buttonNextStep.trigger('submit');
 
     expect(legendError.text()).toBe('Campo inválido!')
-  }),
+  })
 
   it('should display error if input cpf is empty or invalid', async () => {
     const wrapper = shallowMount(Step4, {
@@ -259,7 +259,7 @@ describe('Step4.vue component', () => {
     await buttonNextStep.trigger('submit');
 
     expect(legendError.text()).toBe('Campo inválido!');
-  }),
+  })
 
   it('should display error if input company name is empty or invalid', async () => {
     const wrapper = shallowMount(Step4, {
@@ -298,7 +298,7 @@ describe('Step4.vue component', () => {
     await buttonNextStep.trigger('submit');
 
     expect(legendError.text()).toBe('Campo inválido!')
-  }),
+  })
 
   it('should display error if input cnpj is empty or invalid', async () => {
     const wrapper = shallowMount(Step4, {
@@ -337,7 +337,7 @@ describe('Step4.vue component', () => {
     await buttonNextStep.trigger('submit');
 
     expect(legendError.text()).toBe('Campo inválido!');
-  }),
+  })
 
   it('should display error if input phone is empty or invalid', async () => {
     const wrapper = shallowMount(Step4, {
@@ -384,7 +384,7 @@ describe('Step4.vue component', () => {
     await buttonNextStep.trigger('submit');
     legendError = wrapper.find('[data-test="error-phone"]');
     expect(legendError.exists()).toBeFalsy();
-  }),
+  })
 
   it('should emit the previous step when the back button is pressed', async () => {
     const wrapper = shallowMount(Step4, {
@@ -413,7 +413,7 @@ describe('Step4.vue component', () => {
     const backEvent = wrapper.emitted('previous-step');
     expect(backEvent).toHaveLength(1);
     expect(backEvent[0]).toEqual([]);
-  }),
+  })
 
   it('should emit the next step if all fields are valid and client is "PF"', async () => {
     const wrapper = shallowMount(Step4, {
@@ -470,7 +470,7 @@ describe('Step4.vue component', () => {
         password: '!StrongPassword123'
       }
     ]);
-  }),
+  })
 
   it('should emit the next step if all fields are valid and client is "PJ"', async () => {
     const wrapper = shallowMount(Step4, {

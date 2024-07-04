@@ -1,6 +1,6 @@
 <template>
   <section>
-    Passo {{ currentStep }} de 4
+    <p data-test="step">Passo {{ currentStep }} de 4</p>
   </section>
 </template>
 

@@ -8,13 +8,14 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
-    "test:coverage": "npx jest --coverage"
+    "test:coverage": "vitest --coverage"
   },
   "dependencies": {
     "vue": "^3.4.29"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
+    "@vitest/coverage-v8": "^1.6.0",
     "@vue/test-utils": "^2.4.6",
     "jest": "^29.7.0",
     "jsdom": "^24.1.0",
