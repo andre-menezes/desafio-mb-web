@@ -1,4 +1,4 @@
-# Desafio MB Web - Frontend
+# Desafio MB Web - Backend
 
 ## Configuração do projeto
 
@@ -10,7 +10,7 @@ git clone https://github.com/andre-menezes/desafio-mb-web.git
 ### Instalação das dependências
 ```sh
 cd desafio-mb-web
-cd frontend
+cd backend
 npm install
 ```
 
@@ -19,16 +19,4 @@ Obs: Antes de iniciar o frontend da aplicação, inicie o backend conforme instr
 
 ```sh
 npm run dev
-```
-
-### Rodar testes unitários
-
-```sh
-npm run test:unit
-```
-
-### Fazer o build do projeto
-
-```sh
-npm run build
 ```
