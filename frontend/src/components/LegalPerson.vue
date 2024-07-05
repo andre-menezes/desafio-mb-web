@@ -1,36 +1,49 @@
 <template>
-  <h1 data-test="heading">Pessoa Jurídica</h1>
-  <form @submit.prevent="submitForm" novalidate data-test="form">
-    <label for="companyName">
-      Razão Social
-      <input v-model="formStep2.companyName" type="text" id="companyName" data-test="company-name"
-        autocomplete="organization" required />
-    </label>
-    <legend v-if="isInvalid.companyName" data-test="error-company-name">{{ error.companyName }}</legend>
+  <h1 data-testid="heading" class="form__title">Pessoa Jurídica</h1>
+  <form @submit.prevent="submitForm" novalidate data-testid="form" class="form">
+    <div>
+      <label for="companyName" class="form__label">
+        Razão Social
+        <input v-model="formStep2.companyName" type="text" id="companyName" data-testid="company-name"
+          autocomplete="organization" required class="form__input" />
+      </label>
+      <legend v-if="isInvalid.companyName" data-testid="error-company-name" class="form__legend">{{ error.companyName }}
+      </legend>
+    </div>
 
-    <label for="cnpj">
-      CNPJ
-      <input v-model="formStep2.cnpj" type="text" placeholder="ex: 12.345.678/0001-90" id="cnpj" data-test="cnpj"
-        autocomplete="off" required />
-    </label>
-    <legend v-if="isInvalid.cnpj" data-test="error-cnpj">{{ error.cnpj }}</legend>
+    <div>
+      <label for="cnpj" class="form__label">
+        CNPJ
+        <input v-model="formStep2.cnpj" type="text" placeholder="ex: 12.345.678/0001-90" id="cnpj" data-testid="cnpj"
+          autocomplete="off" required class="form__input" />
+      </label>
+      <legend v-if="isInvalid.cnpj" data-testid="error-cnpj" class="form__legend">{{ error.cnpj }}</legend>
+    </div>
 
-    <label for="openingDate">
-      Data de abertura
-      <input v-model="formStep2.openingDate" type="date" id="openingDate" data-test="opening-date" autocomplete="bday"
-        required />
-    </label>
-    <legend v-if="isInvalid.openingDate" data-test="error-opening-date">{{ error.openingDate }}</legend>
+    <div>
+      <label for="openingDate" class="form__label">
+        Data de abertura
+        <input v-model="formStep2.openingDate" type="date" id="openingDate" data-testid="opening-date" autocomplete="bday"
+          required class="form__input" />
+      </label>
+      <legend v-if="isInvalid.openingDate" data-testid="error-opening-date" class="form__legend">{{ error.openingDate }}
+      </legend>
+    </div>
 
-    <label for="phone">
-      Telefone
-      <input v-model="formStep2.phone" type="tel" placeholder="ex: (98) 8765-4321" id="phone" data-test="phone"
-        autocomplete="tel" required />
-    </label>
-    <legend v-if="isInvalid.phone" data-test="error-phone">{{ error.phone }}</legend>
+    <div>
+      <label for="phone" class="form__label">
+        Telefone
+        <input v-model="formStep2.phone" type="tel" placeholder="ex: (12) 3456-7890" id="phone" data-testid="phone"
+          autocomplete="tel" required class="form__input" />
+      </label>
+      <legend v-if="isInvalid.phone" data-testid="error-phone" class="form__legend">{{ error.phone }}</legend>
+    </div>
 
-    <button type="button" id="previous-step" data-test="btn-previous" @click="emit('previous-step')">Voltar</button>
-    <button type="submit" id="next-step" data-test="btn-next">Continuar</button>
+    <div class="form__button-position">
+      <custom-button type="button" id="previous-step" data-testid="btn-previous" text="Voltar"
+        @handle-click="previousStep" class="form__button button-outline" />
+      <custom-button type="submit" data-testid="btn-next" text="Continuar" class="form__button button-solid" />
+    </div>
   </form>
 </template>
 
@@ -65,6 +78,10 @@ const error = reactive({
 function setInvalidField(typeError, field) {
   isInvalid[field] = true;
   error[field] = typeError === 'empty' ? 'Campo obrigatório!' : 'Campo inválido!'
+}
+
+function previousStep() {
+  emit('previous-step');
 }
 
 function submitForm() {

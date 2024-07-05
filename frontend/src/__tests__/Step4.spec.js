@@ -24,51 +24,49 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const heading = wrapper.find('[data-test="heading"]');
+    const heading = wrapper.find('[data-testid="heading"]');
     expect(heading.exists()).toBeTruthy();
     expect(heading.element.tagName).toBe('H1')
     expect(heading.text()).toBe('Revise suas informações');
 
-    const form = wrapper.find('[data-test="form"]');
+    const form = wrapper.find('[data-testid="form"]');
     expect(form.exists()).toBeTruthy();
     expect(form.element.tagName).toBe('FORM');
 
-    const inputEmail = wrapper.find('[data-test="email"]');
+    const inputEmail = wrapper.find('[data-testid="email"]');
     expect(inputEmail.exists()).toBeTruthy();
     expect(inputEmail.element.tagName).toBe('INPUT');
     expect(inputEmail.attributes('type')).toBe('email');
 
-    const inputName = wrapper.find('[data-test="name"]');
+    const inputName = wrapper.find('[data-testid="name"]');
     expect(inputName.exists()).toBeTruthy();
     expect(inputName.element.tagName).toBe('INPUT');
     expect(inputName.attributes('type')).toBe('text');
     
-    const inputCpf = wrapper.find('[data-test="cpf"]');
+    const inputCpf = wrapper.find('[data-testid="cpf"]');
     expect(inputCpf.exists()).toBeTruthy();
     expect(inputCpf.element.tagName).toBe('INPUT');
     expect(inputCpf.attributes('type')).toBe('text');
     
-    const inputBirthdate = wrapper.find('[data-test="birthdate"]');
+    const inputBirthdate = wrapper.find('[data-testid="birthdate"]');
     expect(inputBirthdate.exists()).toBeTruthy();
     expect(inputBirthdate.element.tagName).toBe('INPUT');
     expect(inputBirthdate.attributes('type')).toBe('date');
     
-    const inputPhone = wrapper.find('[data-test="phone"]');
+    const inputPhone = wrapper.find('[data-testid="phone"]');
     expect(inputPhone.exists()).toBeTruthy();
     expect(inputPhone.element.tagName).toBe('INPUT');
     expect(inputPhone.attributes('type')).toBe('tel');
 
-    const buttonPreviousStep = wrapper.find('[data-test="btn-previous"]');
+    const buttonPreviousStep = wrapper.find('[data-testid="btn-previous"]');
     expect(buttonPreviousStep.exists()).toBeTruthy();
-    expect(buttonPreviousStep.element.tagName).toBe('BUTTON');
+    expect(buttonPreviousStep.element.tagName).toBe('CUSTOM-BUTTON');
     expect(buttonPreviousStep.attributes('type')).toBe('button');
-    expect(buttonPreviousStep.text()).toBe('Voltar');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     expect(buttonNextStep.exists()).toBeTruthy();
-    expect(buttonNextStep.element.tagName).toBe('BUTTON');
+    expect(buttonNextStep.element.tagName).toBe('CUSTOM-BUTTON');
     expect(buttonNextStep.attributes('type')).toBe('submit');
-    expect(buttonNextStep.text()).toBe('Cadastrar');
   })
 
   it('should renders component when client is "PJ"', () => {
@@ -92,51 +90,49 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const heading = wrapper.find('[data-test="heading"]');
+    const heading = wrapper.find('[data-testid="heading"]');
     expect(heading.exists()).toBeTruthy();
     expect(heading.element.tagName).toBe('H1')
     expect(heading.text()).toBe('Revise suas informações');
 
-    const form = wrapper.find('[data-test="form"]');
+    const form = wrapper.find('[data-testid="form"]');
     expect(form.exists()).toBeTruthy();
     expect(form.element.tagName).toBe('FORM');
 
-    const inputEmail = wrapper.find('[data-test="email"]');
+    const inputEmail = wrapper.find('[data-testid="email"]');
     expect(inputEmail.exists()).toBeTruthy();
     expect(inputEmail.element.tagName).toBe('INPUT');
     expect(inputEmail.attributes('type')).toBe('email');
 
-    const inputCompanyName = wrapper.find('[data-test="company-name"]');
+    const inputCompanyName = wrapper.find('[data-testid="company-name"]');
     expect(inputCompanyName.exists()).toBeTruthy();
     expect(inputCompanyName.element.tagName).toBe('INPUT');
     expect(inputCompanyName.attributes('type')).toBe('text');
     
-    const inputCnpj = wrapper.find('[data-test="cnpj"]');
+    const inputCnpj = wrapper.find('[data-testid="cnpj"]');
     expect(inputCnpj.exists()).toBeTruthy();
     expect(inputCnpj.element.tagName).toBe('INPUT');
     expect(inputCnpj.attributes('type')).toBe('text');
     
-    const inputOpeningDate = wrapper.find('[data-test="opening-date"]');
+    const inputOpeningDate = wrapper.find('[data-testid="opening-date"]');
     expect(inputOpeningDate.exists()).toBeTruthy();
     expect(inputOpeningDate.element.tagName).toBe('INPUT');
     expect(inputOpeningDate.attributes('type')).toBe('date');
 
-    const inputPhone = wrapper.find('[data-test="phone"]');
+    const inputPhone = wrapper.find('[data-testid="phone"]');
     expect(inputPhone.exists()).toBeTruthy();
     expect(inputPhone.element.tagName).toBe('INPUT');
     expect(inputPhone.attributes('type')).toBe('tel');
 
-    const buttonPreviousStep = wrapper.find('[data-test="btn-previous"]');
+    const buttonPreviousStep = wrapper.find('[data-testid="btn-previous"]');
     expect(buttonPreviousStep.exists()).toBeTruthy();
-    expect(buttonPreviousStep.element.tagName).toBe('BUTTON');
+    expect(buttonPreviousStep.element.tagName).toBe('CUSTOM-BUTTON');
     expect(buttonPreviousStep.attributes('type')).toBe('button');
-    expect(buttonPreviousStep.text()).toBe('Voltar');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     expect(buttonNextStep.exists()).toBeTruthy();
-    expect(buttonNextStep.element.tagName).toBe('BUTTON');
+    expect(buttonNextStep.element.tagName).toBe('CUSTOM-BUTTON');
     expect(buttonNextStep.attributes('type')).toBe('submit');
-    expect(buttonNextStep.text()).toBe('Cadastrar');
   })
 
   it('should display error if input email is empty or invalid', async () => {
@@ -160,16 +156,16 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const inputEmail = wrapper.find('[data-test="email"]');
+    const inputEmail = wrapper.find('[data-testid="email"]');
     inputEmail.setValue('');
     
-    let legend = wrapper.find('[data-test="error-name"]');
+    let legend = wrapper.find('[data-testid="error-name"]');
     expect(legend.exists()).toBeFalsy();
     
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit');
     
-    legend = wrapper.find('[data-test="error-email"]');
+    legend = wrapper.find('[data-testid="error-email"]');
     expect(legend.element.tagName).toBe('LEGEND');
     expect(legend.text()).toBe('Campo obrigatório!')
     
@@ -179,7 +175,7 @@ describe('Step4.vue component', () => {
     
     inputEmail.setValue('valid@email.com');
     await buttonNextStep.trigger('submit');
-    legend = wrapper.find('[data-test="error-email"]');
+    legend = wrapper.find('[data-testid="error-email"]');
     expect(legend.exists()).toBeFalsy();
   })
 
@@ -204,13 +200,13 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const inputName = wrapper.find('[data-test="name"]');
+    const inputName = wrapper.find('[data-testid="name"]');
     inputName.setValue('');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit');
 
-    const legendError = wrapper.find('[data-test="error-name"]');
+    const legendError = wrapper.find('[data-testid="error-name"]');
     expect(legendError.exists()).toBeTruthy();
     expect(legendError.element.tagName).toBe('LEGEND');
     expect(legendError.text()).toBe('Campo obrigatório!');
@@ -243,13 +239,13 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const inputCpf = wrapper.find('[data-test="cpf"]');
+    const inputCpf = wrapper.find('[data-testid="cpf"]');
     inputCpf.setValue('');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit');
 
-    const legendError = wrapper.find('[data-test="error-cpf"]');
+    const legendError = wrapper.find('[data-testid="error-cpf"]');
     expect(legendError.exists()).toBeTruthy();
     expect(legendError.element.tagName).toBe('LEGEND');
     expect(legendError.text()).toBe('Campo obrigatório!');
@@ -282,13 +278,13 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const inputCompanyName = wrapper.find('[data-test="company-name"]');
+    const inputCompanyName = wrapper.find('[data-testid="company-name"]');
     inputCompanyName.setValue('');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit');
 
-    const legendError = wrapper.find('[data-test="error-company-name"]');
+    const legendError = wrapper.find('[data-testid="error-company-name"]');
     expect(legendError.exists()).toBeTruthy();
     expect(legendError.element.tagName).toBe('LEGEND');
     expect(legendError.text()).toBe('Campo obrigatório!');
@@ -321,13 +317,13 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const inputCnpj = wrapper.find('[data-test="cnpj"]');
+    const inputCnpj = wrapper.find('[data-testid="cnpj"]');
     inputCnpj.setValue('');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit');
 
-    const legendError = wrapper.find('[data-test="error-cnpj"]');
+    const legendError = wrapper.find('[data-testid="error-cnpj"]');
     expect(legendError.exists()).toBeTruthy();
     expect(legendError.element.tagName).toBe('LEGEND');
     expect(legendError.text()).toBe('Campo obrigatório!');
@@ -360,13 +356,13 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const inputPhone = wrapper.find('[data-test="phone"]');
+    const inputPhone = wrapper.find('[data-testid="phone"]');
     inputPhone.setValue('');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit');
 
-    let legendError = wrapper.find('[data-test="error-phone"]');
+    let legendError = wrapper.find('[data-testid="error-phone"]');
     expect(legendError.exists()).toBeTruthy();
     expect(legendError.element.tagName).toBe('LEGEND');
     expect(legendError.text()).toBe('Campo obrigatório!');
@@ -377,12 +373,12 @@ describe('Step4.vue component', () => {
 
     inputPhone.setValue('(10) 1234-5678');
     await buttonNextStep.trigger('submit');
-    legendError = wrapper.find('[data-test="error-phone"]');
+    legendError = wrapper.find('[data-testid="error-phone"]');
     expect(legendError.exists()).toBeFalsy();
 
     inputPhone.setValue('(10) 12345-6789');
     await buttonNextStep.trigger('submit');
-    legendError = wrapper.find('[data-test="error-phone"]');
+    legendError = wrapper.find('[data-testid="error-phone"]');
     expect(legendError.exists()).toBeFalsy();
   })
 
@@ -407,8 +403,8 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const buttonPreviousStep = wrapper.find('[data-test="btn-previous"]');
-    await buttonPreviousStep.trigger('click')
+    const buttonPreviousStep = wrapper.find('[data-testid="btn-previous"]');
+    await buttonPreviousStep.trigger('handle-click')
 
     const backEvent = wrapper.emitted('previous-step');
     expect(backEvent).toHaveLength(1);
@@ -436,25 +432,25 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const inputEmail = wrapper.find('[data-test="email"]');
+    const inputEmail = wrapper.find('[data-testid="email"]');
     inputEmail.setValue('valid@email.com');
 
-    const inputName = wrapper.find('[data-test="name"]');
+    const inputName = wrapper.find('[data-testid="name"]');
     inputName.setValue('John Doe');
 
-    const inputCpf = wrapper.find('[data-test="cpf"]');
+    const inputCpf = wrapper.find('[data-testid="cpf"]');
     inputCpf.setValue('987.654.321-10');
 
-    const inputBirthdate = wrapper.find('[data-test="birthdate"]');
+    const inputBirthdate = wrapper.find('[data-testid="birthdate"]');
     inputBirthdate.setValue('1970-12-31');
 
-    const inputPhone = wrapper.find('[data-test="phone"]');
+    const inputPhone = wrapper.find('[data-testid="phone"]');
     inputPhone.setValue('(10) 98765-4321');
 
-    const inputPassword = wrapper.find('[data-test="password"]');
+    const inputPassword = wrapper.find('[data-testid="password"]');
     inputPassword.setValue('!StrongPassword123');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit')
 
     const submitFormEvent = wrapper.emitted('next-step');
@@ -493,25 +489,25 @@ describe('Step4.vue component', () => {
       }
     });
 
-    const inputEmail = wrapper.find('[data-test="email"]');
+    const inputEmail = wrapper.find('[data-testid="email"]');
     inputEmail.setValue('valid@email.com');
 
-    const inputCompanyName = wrapper.find('[data-test="company-name"]');
+    const inputCompanyName = wrapper.find('[data-testid="company-name"]');
     inputCompanyName.setValue('JD Company');
 
-    const inputCnpj = wrapper.find('[data-test="cnpj"]');
+    const inputCnpj = wrapper.find('[data-testid="cnpj"]');
     inputCnpj.setValue('12.345.678/0001-90');
 
-    const inputOpeningDate = wrapper.find('[data-test="opening-date"]');
+    const inputOpeningDate = wrapper.find('[data-testid="opening-date"]');
     inputOpeningDate.setValue('2020-01-31');
 
-    const inputPhone = wrapper.find('[data-test="phone"]');
+    const inputPhone = wrapper.find('[data-testid="phone"]');
     inputPhone.setValue('(10) 98765-4321');
 
-    const inputPassword = wrapper.find('[data-test="password"]');
+    const inputPassword = wrapper.find('[data-testid="password"]');
     inputPassword.setValue('!StrongPassword123');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit')
 
     const submitFormEvent = wrapper.emitted('next-step');

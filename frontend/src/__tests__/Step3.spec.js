@@ -14,31 +14,29 @@ describe('Step3.vue component', () => {
       }
     });
 
-    const heading = wrapper.find('[data-test="heading"]');
+    const heading = wrapper.find('[data-testid="heading"]');
     expect(heading.exists()).toBeTruthy();
     expect(heading.element.tagName).toBe('H1')
     expect(heading.text()).toBe('Senha de acesso');
 
-    const form = wrapper.find('[data-test="form"]');
+    const form = wrapper.find('[data-testid="form"]');
     expect(form.exists()).toBeTruthy();
     expect(form.element.tagName).toBe('FORM');
 
-    const inputPassword = wrapper.find('[data-test="password"]');
+    const inputPassword = wrapper.find('[data-testid="password"]');
     expect(inputPassword.exists()).toBeTruthy();
     expect(inputPassword.element.tagName).toBe('INPUT');
     expect(inputPassword.attributes('type')).toBe('password');
 
-    const buttonPreviousStep = wrapper.find('[data-test="btn-previous"]');
+    const buttonPreviousStep = wrapper.find('[data-testid="btn-previous"]');
     expect(buttonPreviousStep.exists()).toBeTruthy();
-    expect(buttonPreviousStep.element.tagName).toBe('BUTTON');
+    expect(buttonPreviousStep.element.tagName).toBe('CUSTOM-BUTTON');
     expect(buttonPreviousStep.attributes('type')).toBe('button');
-    expect(buttonPreviousStep.text()).toBe('Voltar');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     expect(buttonNextStep.exists()).toBeTruthy();
-    expect(buttonNextStep.element.tagName).toBe('BUTTON');
+    expect(buttonNextStep.element.tagName).toBe('CUSTOM-BUTTON');
     expect(buttonNextStep.attributes('type')).toBe('submit');
-    expect(buttonNextStep.text()).toBe('Continuar');
   })
 
   it('should display error if input name is empty or invalid', async () => {
@@ -52,13 +50,13 @@ describe('Step3.vue component', () => {
       }
     });
 
-    const inputPassword = wrapper.find('[data-test="password"]');
+    const inputPassword = wrapper.find('[data-testid="password"]');
     inputPassword.setValue('');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit');
 
-    let legendError = wrapper.find('[data-test="error-password"]');
+    let legendError = wrapper.find('[data-testid="error-password"]');
     expect(legendError.exists()).toBeTruthy();
     expect(legendError.element.tagName).toBe('LEGEND');
     expect(legendError.text()).toBe('Campo obrigatório!');
@@ -81,7 +79,7 @@ describe('Step3.vue component', () => {
 
     inputPassword.setValue('!StrongPassword123');
     await buttonNextStep.trigger('submit');
-    legendError = wrapper.find('[data-test="error-password"]');
+    legendError = wrapper.find('[data-testid="error-password"]');
     expect(legendError.exists()).toBeFalsy();
   })
 
@@ -96,8 +94,8 @@ describe('Step3.vue component', () => {
       }
     });
 
-    const buttonPreviousStep = wrapper.find('[data-test="btn-previous"]');
-    await buttonPreviousStep.trigger('click')
+    const buttonPreviousStep = wrapper.find('[data-testid="btn-previous"]');
+    await buttonPreviousStep.trigger('handle-click')
 
     const backEvent = wrapper.emitted('previous-step');
     expect(backEvent).toHaveLength(1);
@@ -115,10 +113,10 @@ describe('Step3.vue component', () => {
       }
     });
 
-    const inputPassword = wrapper.find('[data-test="password"]');
+    const inputPassword = wrapper.find('[data-testid="password"]');
     inputPassword.setValue('!StrongPassword123');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit')
 
     const submitFormEvent = wrapper.emitted('next-step');

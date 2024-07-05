@@ -10,7 +10,7 @@ describe('App.vue component', () => {
     const stepControl = wrapper.findComponent(StepControl);
     expect(stepControl.exists()).toBeTruthy();
 
-    const step1 = wrapper.find('[data-test="step-1"]');
+    const step1 = wrapper.find('[data-testid="step-1"]');
     expect(step1.exists()).toBeTruthy();
   })
 
@@ -23,7 +23,7 @@ describe('App.vue component', () => {
     await wrapper.vm.nextStep();
     expect(wrapper.vm.currentStep).toBe(2);
 
-    const step2 = wrapper.find('[data-test="step-2"]');
+    const step2 = wrapper.find('[data-testid="step-2"]');
     expect(step2.exists()).toBeTruthy();
   })
 
@@ -33,7 +33,7 @@ describe('App.vue component', () => {
 
     await wrapper.vm.nextStep();
 
-    const step3 = wrapper.find('[data-test="step-3"]');
+    const step3 = wrapper.find('[data-testid="step-3"]');
     expect(step3.exists()).toBeTruthy();
   })
 
@@ -43,7 +43,7 @@ describe('App.vue component', () => {
 
     await wrapper.vm.nextStep();
 
-    const step4 = wrapper.find('[data-test="step-4"]');
+    const step4 = wrapper.find('[data-testid="step-4"]');
     expect(step4.exists()).toBeTruthy();
   })
 
@@ -53,7 +53,7 @@ describe('App.vue component', () => {
 
     await wrapper.vm.previousStep();
 
-    const step3 = wrapper.find('[data-test="step-3"]');
+    const step3 = wrapper.find('[data-testid="step-3"]');
     expect(step3.exists()).toBeTruthy();
   })
 
@@ -63,7 +63,7 @@ describe('App.vue component', () => {
 
     await wrapper.vm.previousStep();
 
-    const step2 = wrapper.find('[data-test="step-2"]');
+    const step2 = wrapper.find('[data-testid="step-2"]');
     expect(step2.exists()).toBeTruthy();
   })
 
@@ -73,7 +73,7 @@ describe('App.vue component', () => {
 
     await wrapper.vm.previousStep();
 
-    const step1 = wrapper.find('[data-test="step-1"]');
+    const step1 = wrapper.find('[data-testid="step-1"]');
     expect(step1.exists()).toBeTruthy();
   })
 

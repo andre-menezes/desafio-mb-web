@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@400;600&display=swap');
+@import 'form.css';
+@import 'reset.css';
+@import 'stepControl.css';
+
+body {
+  align-items: start;
+  background-color: var(--background);
+  color: var(--text);
+  display: flex;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
+:root {
+  --background: #F5F7F9;
+  --shadow: #45454530;
+  --white: #FFFFFF;
+  --text: #454545;
+  --primary: #FB8C00;
+  --placeholder: #25252530;
+  --error: #EF5350;
+
+  font-family: 'Inter', sans-serif;
+}

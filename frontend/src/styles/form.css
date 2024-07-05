@@ -1,0 +1,96 @@
+.box {
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 0.2rem;
+  box-shadow: 0 0 1rem 0.2rem var(--shadow);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  max-width: 768px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  gap: .8rem; 
+  flex-direction: column;
+  padding: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+}
+
+.form__input {
+  border-radius: 0.2rem;
+  border: 1px solid var(--shadow);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  padding: 0.5rem 1rem;
+  margin-top: 0.3rem;
+  outline: 0;
+  width: 100%;
+}
+
+.form__input:focus {
+  border: 1px solid var(--primary);
+}
+
+.form__input::placeholder {
+  color: var(--placeholder)
+}
+
+input[type='radio'] {
+  cursor: pointer;
+}
+
+.form__radio-group {
+  align-self: center;
+  display: flex;
+  gap: clamp(1.3rem, 2vw, 3rem);
+  margin-top: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.form__legend {
+  color: var(--error);
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-style: italic;
+  margin-left: .5rem;
+}
+
+.form__label {
+  cursor: pointer;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+.form__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 2.5rem);
+  padding: 1rem clamp(1rem, 2vw, 2rem);
+  text-align: center;
+  width: 100%;
+}
+
+.form__button {
+  border: 1px solid var(--primary);
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-size: clamp(.8rem, 2vw, 1rem);
+  padding: .7rem 1.3rem;
+  text-transform: uppercase;
+}
+
+.button-solid {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.button-outline {
+  background-color: var(--white);
+  color: var(--primary);
+}
+
+.form__button-position {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}

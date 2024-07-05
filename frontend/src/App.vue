@@ -1,7 +1,7 @@
 <template>
-  <main>
+  <main class="box">
     <StepControl :currentStep="currentStep" />
-    <component :data-test="`step-${currentStep}`" :is="currentStepComponent" :formData="formData" @next-step="nextStep"
+    <component :data-testid="`step-${currentStep}`" :is="currentStepComponent" :formData="formData" @next-step="nextStep"
       @previous-step="previousStep" />
   </main>
 </template>
@@ -53,7 +53,9 @@ async function nextStep(stepData) {
 }
 
 function previousStep() {
+  console.log('antes currentStep: :', currentStep.value);
   if (currentStep.value > 1) currentStep.value--;
+  console.log('depois currentStep: :', currentStep.value);
 }
 
 function resetFields() {

@@ -1,35 +1,47 @@
 <template>
-  <h1 data-test="heading">Pessoa Física</h1>
-  <form @submit.prevent="submitForm" novalidate data-test="form">
-    <label for="name">
-      Nome completo
-      <input v-model="formStep2.name" type="text" id="name" data-test="name" autocomplete="name" required />
-    </label>
-    <legend v-if="isInvalid.name" data-test="error-name">{{ error.name }}</legend>
+  <h1 data-testid="heading" class="form__title">Pessoa Física</h1>
+  <form @submit.prevent="submitForm" novalidate data-testid="form" class="form">
+    <div>
+      <label for="name" class="form__label">
+        Nome completo
+        <input v-model="formStep2.name" type="text" id="name" data-testid="name" autocomplete="name" required
+          class="form__input" />
+      </label>
+      <legend v-if="isInvalid.name" data-testid="error-name" class="form__legend">{{ error.name }}</legend>
+    </div>
 
-    <label for="cpf">
-      CPF
-      <input v-model="formStep2.cpf" type="text" placeholder="ex: 123.456.789-10" id="cpf" data-test="cpf"
-        autocomplete="off" required />
-    </label>
-    <legend v-if="isInvalid.cpf" data-test="error-cpf">{{ error.cpf }}</legend>
+    <div>
+      <label for="cpf" class="form__label">
+        CPF
+        <input v-model="formStep2.cpf" type="text" placeholder="ex: 123.456.789-10" id="cpf" data-testid="cpf"
+          autocomplete="off" required class="form__input" />
+      </label>
+      <legend v-if="isInvalid.cpf" data-testid="error-cpf" class="form__legend">{{ error.cpf }}</legend>
+    </div>
 
-    <label for="birthdate">
-      Data de nascimento
-      <input v-model="formStep2.birthdate" type="date" id="birthdate" data-test="birthdate" autocomplete="bday"
-        required />
-    </label>
-    <legend v-if="isInvalid.birthdate" data-test="error-birthdate">{{ error.birthdate }}</legend>
+    <div>
+      <label for="birthdate" class="form__label">
+        Data de nascimento
+        <input v-model="formStep2.birthdate" type="date" id="birthdate" data-testid="birthdate" autocomplete="bday"
+          required class="form__input" />
+      </label>
+      <legend v-if="isInvalid.birthdate" data-testid="error-birthdate" class="form__legend">{{ error.birthdate }}</legend>
+    </div>
 
-    <label for="phone">
-      Telefone
-      <input v-model="formStep2.phone" type="tel" placeholder="ex: (12) 34567-8910" id="phone" data-test="phone"
-        autocomplete="tel" required />
-    </label>
-    <legend v-if="isInvalid.phone" data-test="error-phone">{{ error.phone }}</legend>
+    <div>
+      <label for="phone" class="form__label">
+        Telefone
+        <input v-model="formStep2.phone" type="tel" placeholder="ex: (12) 34567-8910" id="phone" data-testid="phone"
+          autocomplete="tel" required class="form__input" />
+      </label>
+      <legend v-if="isInvalid.phone" data-testid="error-phone" class="form__legend">{{ error.phone }}</legend>
+    </div>
 
-    <button type="button" id="previous-step" data-test="btn-previous" @click="emit('previous-step')">Voltar</button>
-    <button type="submit" id="next-step" data-test="btn-next">Continuar</button>
+    <div class="form__button-position">
+      <custom-button type="button" id="previous-step" data-testid="btn-previous" text="Voltar"
+        @handle-click="previousStep" class="form__button button-outline" />
+      <custom-button type="submit" data-testid="btn-next" text="Continuar" class="form__button button-solid" />
+    </div>
   </form>
 </template>
 
@@ -64,6 +76,10 @@ const error = reactive({
 function setInvalidField(typeError, field) {
   isInvalid[field] = true;
   error[field] = typeError === 'empty' ? 'Campo obrigatório!' : 'Campo inválido!'
+}
+
+function previousStep() {
+  emit('previous-step');
 }
 
 function submitForm() {

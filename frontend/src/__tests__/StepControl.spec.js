@@ -10,7 +10,7 @@ describe('StepControl.vue component', () => {
       }
     });
 
-    const step = wrapper.find('[data-test="step"]');
+    const step = wrapper.find('[data-testid="step"]');
     expect(step.exists()).toBeTruthy();
     expect(step.text()).toBe('Passo 1 de 4');
     expect(step.text()).not.toBe('Passo 2 de 4');
@@ -25,7 +25,7 @@ describe('StepControl.vue component', () => {
       }
     });
 
-    const step = wrapper.find('[data-test="step"]');
+    const step = wrapper.find('[data-testid="step"]');
     expect(step.exists()).toBeTruthy();
     expect(step.text()).not.toBe('Passo 1 de 4');
     expect(step.text()).toBe('Passo 2 de 4');
@@ -40,7 +40,7 @@ describe('StepControl.vue component', () => {
       }
     });
 
-    const step = wrapper.find('[data-test="step"]');
+    const step = wrapper.find('[data-testid="step"]');
     expect(step.exists()).toBeTruthy();
     expect(step.text()).not.toBe('Passo 1 de 4');
     expect(step.text()).not.toBe('Passo 2 de 4');
@@ -55,7 +55,7 @@ describe('StepControl.vue component', () => {
       }
     });
 
-    const step = wrapper.find('[data-test="step"]');
+    const step = wrapper.find('[data-testid="step"]');
     expect(step.exists()).toBeTruthy();
     expect(step.text()).not.toBe('Passo 1 de 4');
     expect(step.text()).not.toBe('Passo 2 de 4');

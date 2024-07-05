@@ -15,16 +15,16 @@ describe('Step1.vue component', () => {
       }
     });
 
-    const heading = wrapper.find('[data-test="heading"]');
+    const heading = wrapper.find('[data-testid="heading"]');
     expect(heading.exists()).toBeTruthy();
     expect(heading.element.tagName).toBe('H1')
     expect(heading.text()).toBe('Seja bem vindo(a)!');
 
-    const form = wrapper.find('[data-test="form"]');
+    const form = wrapper.find('[data-testid="form"]');
     expect(form.exists()).toBeTruthy();
     expect(form.element.tagName).toBe('FORM');
 
-    const inputEmail = wrapper.find('[data-test="email"]');
+    const inputEmail = wrapper.find('[data-testid="email"]');
     expect(inputEmail.exists()).toBeTruthy();
     expect(inputEmail.element.tagName).toBe('INPUT');
     expect(inputEmail.attributes('type')).toBe('email');
@@ -39,11 +39,10 @@ describe('Step1.vue component', () => {
     expect(pjRadioButton.element.tagName).toBe('INPUT');
     expect(pjRadioButton.attributes('type')).toBe('radio');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     expect(buttonNextStep.exists()).toBeTruthy();
-    expect(buttonNextStep.element.tagName).toBe('BUTTON');
+    expect(buttonNextStep.element.tagName).toBe('CUSTOM-BUTTON');
     expect(buttonNextStep.attributes('type')).toBe('submit');
-    expect(buttonNextStep.text()).toBe('Continuar');
   })
 
   it('should display error if input email is empty or invalid', async () => {
@@ -58,16 +57,16 @@ describe('Step1.vue component', () => {
       }
     });
     
-    const inputEmail = wrapper.find('[data-test="email"]');
+    const inputEmail = wrapper.find('[data-testid="email"]');
     inputEmail.setValue('');
     
-    let legend = wrapper.find('[data-test="error-email"]');
+    let legend = wrapper.find('[data-testid="error-email"]');
     expect(legend.exists()).toBeFalsy();
     
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit');
     
-    legend = wrapper.find('[data-test="error-email"]');
+    legend = wrapper.find('[data-testid="error-email"]');
     expect(legend.element.tagName).toBe('LEGEND');
     expect(legend.text()).toBe('Campo obrigatório!')
     
@@ -93,10 +92,10 @@ describe('Step1.vue component', () => {
       }
     });
 
-    const inputEmail = wrapper.find('[data-test="email"]');
+    const inputEmail = wrapper.find('[data-testid="email"]');
     inputEmail.setValue('valid@email.com');
 
-    const buttonNextStep = wrapper.find('[data-test="btn-next"]');
+    const buttonNextStep = wrapper.find('[data-testid="btn-next"]');
     await buttonNextStep.trigger('submit');
 
     const submitFormEvent = wrapper.emitted('next-step');

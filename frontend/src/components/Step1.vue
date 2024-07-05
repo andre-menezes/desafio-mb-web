@@ -1,23 +1,26 @@
 <template>
-  <h1 data-test="heading">Seja bem vindo(a)!</h1>
-  <form @submit.prevent="submitForm" novalidate data-test="form">
-    <label for="email">
-      Endereço de e-mail
-      <input v-model="formStep1.email" type="email" id="email" data-test="email" autocomplete="email" required />
-    </label>
-    <legend v-if="isInvalid" data-test="error-email">{{ error }}</legend>
+  <h1 data-testid="heading" class="form__title">Seja bem vindo(a)!</h1>
+  <form @submit.prevent="submitForm" novalidate data-testid="form" class="form">
     <div>
-      <label for="pf">
-        <input v-model="formStep1.client" id="pf" type="radio" name="client" value="PF" />
+      <label for="email" class="form__label">
+        Endereço de e-mail
+        <input v-model="formStep1.email" type="email" id="email" data-testid="email" autocomplete="email" required
+          class="form__input" />
+      </label>
+      <legend v-if="isInvalid" data-testid="error-email" class="form__legend">{{ error }}</legend>
+    </div>
+    <div class="form__radio-group">
+      <label for="pf" class="form__label">
+        <input v-model="formStep1.client" id="pf" type="radio" name="client" value="PF" class="radio" />
         Pessoa Física
       </label>
 
-      <label for="pj">
+      <label for="pj" class="form__label">
         <input v-model="formStep1.client" id="pj" type="radio" name="client" value="PJ" />
         Pessoa Jurídica
       </label>
     </div>
-    <button type="submit" data-test="btn-next">Continuar</button>
+    <custom-button type="submit" data-testid="btn-next" text="Continuar" class="form__button button-solid" />
   </form>
 </template>
 
@@ -50,3 +53,5 @@ function submitForm() {
   return isFormValid && emit('next-step', formStep1);
 }
 </script>
+
+<style></style>

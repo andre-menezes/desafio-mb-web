@@ -1,0 +1,29 @@
+.step-control {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.step-control__current-step {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.step-control__bars {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.step-control__bars__item {
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+  height: 5px;
+  width: clamp(4rem, 10vw, 6rem);
+}
+
+.current {
+  background-color: var(--primary);
+}

@@ -1,15 +1,20 @@
 <template>
-  <h1 data-test="heading">Senha de acesso</h1>
-  <form @submit.prevent="submitForm" novalidate data-test="form">
-    <label for="pswd">
-      Sua senha
-      <input v-model="formStep3.password" type="password" id="pswd" data-test="password" autocomplete="new-password"
-        required />
-    </label>
-    <legend v-if="isInvalid" data-test="error-password">{{ error }}</legend>
+  <h1 data-testid="heading" class="form__title">Senha de acesso</h1>
+  <form @submit.prevent="submitForm" novalidate data-testid="form" class="form">
+    <div>
+      <label for="pswd" class="form__label">
+        Sua senha
+        <input v-model="formStep3.password" type="password" id="password" data-testid="password"
+          autocomplete="new-password" required class="form__input" />
+      </label>
+      <legend v-if="isInvalid" data-testid="error-password" class="form__legend">{{ error }}</legend>
+    </div>
 
-    <button type="button" id="previous-step" data-test="btn-previous" @click="emit('previous-step')">Voltar</button>
-    <button type="submit" id="next-step" data-test="btn-next">Continuar</button>
+    <div class="form__button-position">
+      <custom-button type="button" id="previous-step" data-testid="btn-previous" text="Voltar"
+        @handle-click="previousStep" class="form__button button-outline" />
+      <custom-button type="submit" data-testid="btn-next" text="Continuar" class="form__button button-solid" />
+    </div>
   </form>
 </template>
 
@@ -26,6 +31,10 @@ const formStep3 = reactive({
 
 const isInvalid = ref(false);
 const error = ref('Campo obrigatório!');
+
+function previousStep() {
+  emit('previous-step');
+}
 
 function submitForm() {
   isInvalid.value = false;
