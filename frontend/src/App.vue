@@ -53,9 +53,7 @@ async function nextStep(stepData) {
 }
 
 function previousStep() {
-  console.log('antes currentStep: :', currentStep.value);
   if (currentStep.value > 1) currentStep.value--;
-  console.log('depois currentStep: :', currentStep.value);
 }
 
 function resetFields() {
