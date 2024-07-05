@@ -83,7 +83,25 @@ describe('App.vue component', () => {
     
     const alert = vi.spyOn(window, 'alert').mockImplementation(() => {})
 
-    await wrapper.vm.nextStep();
+    await wrapper.vm.nextStep({
+      client: 'PF',
+      email: 'john.doe@email.com',
+      password: '!StrongPass123',
+      name: 'John Doe',
+      cpf: '123.456.789-10',
+      birthdate: '1970-01-01',
+      phone: '(12) 3456-7890',
+    });
     expect(alert).toHaveBeenCalledWith('Cadastro realizado com sucesso!');
+  })
+
+  it('should show alert message fail after register invalid when Step4 is complete', async () => {
+    const wrapper = shallowMount(App);
+    wrapper.vm.currentStep = 4;
+    
+    const alert = vi.spyOn(window, 'alert').mockImplementation(() => {})
+
+    await wrapper.vm.nextStep({});
+    expect(alert).toHaveBeenCalledWith('Não foi possível realizar o cadastro!');
   })
 });

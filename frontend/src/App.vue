@@ -11,7 +11,7 @@ import { computed, reactive, ref } from 'vue';
 import StepControl from './components/StepControl.vue';
 import { useFetchApi } from './assets/fetch';
 
-const formData = reactive({
+let formData = reactive({
   step1: {
     email: null,
     client: 'PF'
@@ -36,8 +36,15 @@ async function nextStep(stepData) {
 
   if (currentStep.value === 4) {
     const response = await useFetchApi('/registration', stepData);
+    if (!response.ok) {
+      const data = await response.json();
+      return alert(data.message);
+    }
+
     if (response.ok) {
       const data = await response.json();
+      currentStep.value = 1;
+      resetFields();
       return alert(data.message);
     }
   }
@@ -47,5 +54,23 @@ async function nextStep(stepData) {
 
 function previousStep() {
   if (currentStep.value > 1) currentStep.value--;
+}
+
+function resetFields() {
+  formData = {
+    step1: {
+      email: null,
+      client: 'PF'
+    },
+    step2: {
+      name: null,
+      cpf: null,
+      birthdate: null,
+      phone: null
+    },
+    step3: {
+      password: null
+    }
+  }
 }
 </script>
