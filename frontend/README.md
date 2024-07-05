@@ -1,35 +1,34 @@
-# desafio-mb-web
+# Desafio MB Web - Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+## Configuração do projeto
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
+### Clone do projeto
 ```sh
+git clone https://github.com/andre-menezes/desafio-mb-web.git
+```
+
+### Instalação das dependências
+```sh
+cd desafio-mb-web
+cd frontend
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Iniciar a aplicação
+Obs: Antes de iniciar o frontend da aplicação, inicie o backend conforme instruções do README próprio.
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Rodar testes unitários
 
 ```sh
 npm run test:unit
+```
+
+### Fazer o build do projeto
+
+```sh
+npm run build
 ```
