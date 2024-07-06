@@ -2,6 +2,30 @@
 @import 'reset.css';
 @import 'stepControl.css';
 
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.gstatic.com/s/inter/v3/UcconlFTPB7RYq2ofCKmVsMf6qPNvqX7NLzV-4iW1kA.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.gstatic.com/s/poppins/v9/pxiEyp8kv8JHgFVrJJbecmNE.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: url('https://fonts.gstatic.com/s/poppins/v9/pxiByp8kv8JHgFVrLFj_Z1xlEA.woff2') format('woff2');
+  font-display: swap;
+}
+
 body {
   align-items: start;
   background-color: var(--background);
