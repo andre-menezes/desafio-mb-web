@@ -1,8 +1,10 @@
 <template>
   <main class="box">
     <StepControl :currentStep="currentStep" />
-    <component :data-testid="`step-${currentStep}`" :is="currentStepComponent" :formData="formData" @next-step="nextStep"
-      @previous-step="previousStep" />
+    <keep-alive>
+      <component :data-testid="`step-${currentStep}`" :is="currentStepComponent" :formData="formData"
+        @next-step="nextStep" @previous-step="previousStep" />
+    </keep-alive>
   </main>
 </template>
 
