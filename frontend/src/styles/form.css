@@ -74,6 +74,7 @@ input[type='radio'] {
   cursor: pointer;
   font-size: clamp(.8rem, 2vw, 1rem);
   padding: .7rem 1.3rem;
+  text-shadow: 1px 1px var(--shadow);
   text-transform: uppercase;
 }
 
